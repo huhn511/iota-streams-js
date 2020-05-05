@@ -1,0 +1,21 @@
+[package]
+name = "iota-streams-js"
+version = "0.0.1"
+authors = ["huhn511 <huhn@einfachIOTA.de>"]
+license = "MIT"
+build = "build.rs"
+edition = "2018"
+exclude = ["artifacts.json", "index.node"]
+
+[lib]
+name = "iota_streams_js"
+crate-type = ["cdylib"]
+
+[build-dependencies]
+neon-build = "0.4.0"
+
+[dependencies]
+neon = "0.4.0"
+iota-core = { git = "https://github.com/iotaledger/iota.rs.git" }
+iota-streams = { git = "https://github.com/iotaledger/streams.git" }
+failure = "0.1"

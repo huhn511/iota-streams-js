@@ -1,0 +1,14 @@
+{
+  "name": "iota-streams-js",
+  "version": "0.0.2",
+  "description": "Native Node.js modules with IOTA Streams Rust binding",
+  "main": "lib/index.js",
+  "author": "[huhn511 <huhn@einfachIOTA.de>, you <mail@example.org>]",
+  "license": "MIT",
+  "dependencies": {
+    "neon-cli": "^0.4.0"
+  },
+  "scripts": {
+    "install": "neon build"
+  }
+}

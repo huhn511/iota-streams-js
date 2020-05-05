@@ -17,3 +17,11 @@ streams.publish("Hello").then(success => {
      console.log("Greetings published error ", error)
 })
 ```
+
+Run the demo
+```bash
+git clone https://github.com/huhn511/iota-streams-js
+cd iota-streams-js
+npm install
+node demo.js 
+```

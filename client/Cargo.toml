@@ -1,5 +1,5 @@
 [package]
-name = "client"
+name = "iota-streams-js-client"
 version = "0.0.1"
 authors = ["huhn511 <huhn@einfachIOTA.de>"]
 edition = "2018"

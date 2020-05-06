@@ -9,7 +9,6 @@ use iota_streams::app::transport::tangle::client::SendTrytesOptions;
 use crate::api_author::announce::start_a_new_channel;
 mod api_author;
 
-
 fn get_node_info(mut cx: FunctionContext) -> JsResult<JsString> {
     let iota = iota::Client::new("https://nodes.comnet.thetangle.org");
     // https://github.com/wusyong/iota-example/blob/master/src/main.rs

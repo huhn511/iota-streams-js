@@ -16,6 +16,6 @@ neon-build = "0.4.0"
 
 [dependencies]
 neon = "0.4.0"
-iota-core = { git = "https://github.com/iotaledger/iota.rs.git" }
 iota-streams = { git = "https://github.com/iotaledger/streams.git" }
 failure = "0.1"
+iota-lib-rs = "0.4.1"

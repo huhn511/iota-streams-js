@@ -1,4 +1,5 @@
 use neon::prelude::*;
+use iota::Client;
 
 use iota_streams::{
     app_channels::api::tangle::{Author},
@@ -8,6 +9,14 @@ use iota_streams::app::transport::tangle::client::SendTrytesOptions;
 use crate::api_author::announce::start_a_new_channel;
 mod api_author;
 
+
+fn get_node_info(mut cx: FunctionContext) -> JsResult<JsString> {
+    let iota = iota::Client::new("https://nodes.comnet.thetangle.org");
+    // https://github.com/wusyong/iota-example/blob/master/src/main.rs
+    // let node_info = iota.get_node_info().await?;
+    // println!("{:#?}", node_info);
+    Ok(cx.string("Node info not implemented yet."))
+}
 
 fn hello(mut cx: FunctionContext) -> JsResult<JsString> {
     Ok(cx.string("hello Node.js from Rust."))
@@ -78,5 +87,6 @@ pub fn publish(mut cx: FunctionContext) -> JsResult<JsUndefined> {
 register_module!(mut m, {
     m.export_function("hello", hello)?;
     m.export_function("publish", publish)?;
+    m.export_function("get_node_info", get_node_info)?;
     Ok(())
 });

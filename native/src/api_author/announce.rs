@@ -5,7 +5,7 @@ pub fn start_a_new_channel<T: Transport>(author: &mut Author, client: &mut T, se
     let announcement = author.announce()?;
 
     println!("Message identifier: {}", announcement.link.msgid);
-    client.send_message_with_options(&announcement, send_opt)?;
+    // client.send_message_with_options(&announcement, send_opt)?;
     println!("Channel published");
     //OK(())
     Ok(())

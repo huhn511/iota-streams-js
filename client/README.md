@@ -20,3 +20,8 @@ Build
 ```bash
 npm run build
 ```
+
+build wasm with [wasm-pack](https://rustwasm.github.io/wasm-pack/installer/)
+```bash
+wasm-pack build
+```

@@ -25,3 +25,19 @@ cd iota-streams-js
 npm install
 node demo.js 
 ```
+
+
+## Developme
+
+[neon](https://github.com/neon-bindings/neon)
+Rust bindings for writing safe and fast native Node.js modules.
+
+Install neon
+```bash
+npm install -g neon-cli
+```
+
+Build lib
+```bash
+neon build --release
+```

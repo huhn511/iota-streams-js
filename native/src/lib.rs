@@ -1,13 +1,18 @@
 use neon::prelude::*;
 use iota::Client;
 
-use iota_streams::{
-    app_channels::api::tangle::{Author},
-};
-use iota_streams::app::transport::tangle::client::SendTrytesOptions;
 
-use crate::api_author::announce::start_a_new_channel;
-mod api_author;
+pub mod transport;
+
+use std::{thread, time};
+
+pub mod messaging;
+pub mod channels;
+use failure::{Fallible};
+
+use channels::channel_author;
+use channels::channel_subscriber;
+
 
 fn get_node_info(mut cx: FunctionContext) -> JsResult<JsString> {
     let iota = iota::Client::new("https://nodes.comnet.thetangle.org");
@@ -36,29 +41,21 @@ impl Task for BackgroundTask {
     fn perform(&self) -> Result<String, String> {
 
 
-        // Create a new channel
-        let mut author = Author::new("AUTHORSECRET999", 3, true);
-
-        // Connect to a node and pass this object to the function
-        let mut client = iota::Client::new("https://nodes.devnet.iota.org:443");
-
-        // Change the default settings to use a lower minimum weight magnitude for the Devnet
-        let mut send_opt = SendTrytesOptions::default();
-
-        // Default MWM is 14
-        send_opt.min_weight_magnitude = 9; 
-
-        // TODO: Fix this
-        // match start_a_new_channel(&mut author, &mut client, send_opt) {
-        //     Ok(()) => (),
-        //     Err(error) => println!("Failed with error {}", error),
-        // }
+        let seed_author = "SOME9AUTHOR9SEED9HERE9NOW9K";
+        let seed_subscriber = "SOME9SUBSCRIBER9SEED";
     
-
-        println!(
-            "Channel Adress = {}",
-            author.channel_address()
-        );
+        let node = "https://nodes.devnet.iota.org:443";
+    
+    
+    
+        //Create Channel Instance for writer
+        let mut channel_author = channel_author::Channel::new(seed_author, node);
+    
+        //Open Channel
+        let (channel_address, announcement_tag) = channel_author.open().unwrap();
+        println!("channel_address: {}", channel_address);
+        println!("announcement_tag: {}", announcement_tag);
+    
 
         // Demo how to call error
         let result = "pass";
@@ -66,7 +63,7 @@ impl Task for BackgroundTask {
             return Err("This will fail".to_string());
         }
 
-        Ok(author.channel_address().to_string())
+        Ok(channel_address.to_string())
     }
 
     fn complete(self, mut cx: TaskContext, result: Result<String, String>) -> JsResult<JsString> {

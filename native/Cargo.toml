@@ -17,5 +17,9 @@ neon-build = "0.4.0"
 [dependencies]
 neon = "0.4.0"
 iota-streams = { git = "https://github.com/iotaledger/streams.git" }
-failure = "0.1"
+failure = "0.1.7"
 iota-core = { git = "https://github.com/iotaledger/iota.rs.git" }
+iota-conversion = { git = "https://github.com/iotaledger/iota.rs.git" }
+tokio = { version = "^0.2", features = ["full"] }
+async-trait = "0.1.30"
+chrono = "0.4"

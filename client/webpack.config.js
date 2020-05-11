@@ -8,6 +8,8 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'index.js',
+        library: 'wasm',
+        libraryExport: 'default'
     },
     plugins: [
         new HtmlWebpackPlugin({
